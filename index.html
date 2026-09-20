@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #E8D8C3;
+        }
+
+        section,
+        header {
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+
+    <title>API, HTTP, AJAX & Async JavaScript</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>API, HTTP, AJAX & Async JavaScript</h1>
+        <p>Frontend Development Notes</p>
+    </header>
+
+    <hr>
+
+    <!-- *   1. API   * -->
+
+    <section>
+        <h2>1. What is an API?</h2>
+
+        <p>
+            <strong>API</strong> stands for
+            <strong>Application Programming Interface</strong>.
+        </p>
+
+        <p>
+            An API is an interface that allows different software
+            systems to communicate with each other.
+        </p>
+
+        <h3>Example</h3>
+
+        <pre>
+Website / Mobile App
+        ↓
+       API
+        ↓
+Server / Database
+        </pre>
+
+        <h3>Examples of APIs</h3>
+
+        <ul>
+            <li>YouTube API</li>
+            <li>Google Maps APIs</li>
+            <li>GitHub API</li>
+        </ul>
+
+        <p>
+            An API does not have to be a Web API.
+            APIs can also exist inside operating systems,
+            libraries, frameworks, and applications.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   2. WEB API   * -->
+
+    <section>
+        <h2>2. Web APIs</h2>
+
+        <p>
+            A Web API allows applications to communicate
+            over a network, commonly using HTTP.
+        </p>
+
+        <h3>Typical Communication</h3>
+
+        <pre>
+Client
+  ↓
+HTTP Request
+  ↓
+API / Server
+  ↓
+Process Request
+  ↓
+HTTP Response
+  ↓
+Client
+        </pre>
+
+        <h3>Common Data Formats</h3>
+
+        <ul>
+            <li>JSON</li>
+            <li>XML</li>
+        </ul>
+
+        <h3>JSON Example</h3>
+
+        <pre>
+{
+    "id": 1,
+    "name": "Mohamed"
+}
+        </pre>
+
+        <p>
+            JSON is very common in modern Web APIs.
+        </p>
+
+        <p>
+            REST is an architectural style, not a data format.
+            REST APIs can return JSON, XML, or other formats.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   3. HTTP   * -->
+
+    <section>
+        <h2>3. What is HTTP?</h2>
+
+        <p>
+            <strong>HTTP</strong> stands for
+            <strong>HyperText Transfer Protocol</strong>.
+        </p>
+
+        <p>
+            HTTP is an application-layer protocol used
+            for communication between clients and servers
+            on the Web.
+        </p>
+
+        <h3>HTTP can transfer:</h3>
+
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Images</li>
+            <li>JSON</li>
+            <li>Videos</li>
+            <li>Other resources</li>
+        </ul>
+
+        <h3>Basic Communication</h3>
+
+        <pre>
+Request → Response
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   4. REQUEST / RESPONSE   * -->
+
+    <section>
+        <h2>4. HTTP Request & Response</h2>
+
+        <ol>
+            <li>Client sends an HTTP Request.</li>
+            <li>Server receives the Request.</li>
+            <li>Server processes the Request.</li>
+            <li>Server sends an HTTP Response.</li>
+            <li>Client receives the Response.</li>
+        </ol>
+
+        <h3>Example</h3>
+
+        <pre>
+Browser
+   ↓
+GET /users
+   ↓
+Server
+   ↓
+JSON Response
+   ↓
+Browser
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   5. TCP / IP / HTTP   * -->
+
+    <section>
+        <h2>5. TCP, IP & HTTP</h2>
+
+        <h3>IP — Internet Protocol</h3>
+
+        <p>
+            IP is responsible mainly for addressing and routing
+            data between devices.
+        </p>
+
+        <h3>TCP — Transmission Control Protocol</h3>
+
+        <p>
+            TCP provides reliable and ordered delivery of data.
+        </p>
+
+        <h3>HTTP</h3>
+
+        <p>
+            HTTP defines how web requests and responses
+            are structured and what they mean.
+        </p>
+
+        <pre>
+IP   → Where should the data go?
+TCP  → How can data be delivered reliably?
+HTTP → What is the request/response?
+        </pre>
+
+        <p>
+            HTTP/1.1 and HTTP/2 commonly use TCP,
+            while HTTP/3 uses QUIC over UDP.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   6. HTTP METHODS   * -->
+
+    <section>
+        <h2>6. HTTP Methods</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>GET</td>
+                    <td>Retrieve data</td>
+                    <td>GET /users</td>
+                </tr>
+
+                <tr>
+                    <td>POST</td>
+                    <td>Create / submit data</td>
+                    <td>POST /users</td>
+                </tr>
+
+                <tr>
+                    <td>PUT</td>
+                    <td>Replace a resource</td>
+                    <td>PUT /users/10</td>
+                </tr>
+
+                <tr>
+                    <td>PATCH</td>
+                    <td>Partially modify a resource</td>
+                    <td>PATCH /users/10</td>
+                </tr>
+
+                <tr>
+                    <td>DELETE</td>
+                    <td>Delete a resource</td>
+                    <td>DELETE /users/10</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   7. STATUS CODES   * -->
+
+    <section>
+        <h2>7. HTTP Status Codes</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Range</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1xx</td>
+                    <td>Informational</td>
+                </tr>
+
+                <tr>
+                    <td>2xx</td>
+                    <td>Success</td>
+                </tr>
+
+                <tr>
+                    <td>3xx</td>
+                    <td>Redirection</td>
+                </tr>
+
+                <tr>
+                    <td>4xx</td>
+                    <td>Client Error</td>
+                </tr>
+
+                <tr>
+                    <td>5xx</td>
+                    <td>Server Error</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h3>1xx — Informational</h3>
+
+        <p>
+            The request was received and processing is continuing.
+        </p>
+
+        <p>
+            Example: <strong>100 Continue</strong>
+        </p>
+
+
+        <h3>2xx — Success</h3>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>200 OK</td>
+                    <td>Request succeeded.</td>
+                </tr>
+
+                <tr>
+                    <td>201 Created</td>
+                    <td>A new resource was created.</td>
+                </tr>
+
+                <tr>
+                    <td>204 No Content</td>
+                    <td>Success without a response body.</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h3>3xx — Redirection</h3>
+
+        <ul>
+            <li>301 Moved Permanently</li>
+            <li>302 Found</li>
+            <li>304 Not Modified</li>
+        </ul>
+
+
+        <h3>4xx — Client Errors</h3>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>400</td>
+                    <td>Bad Request</td>
+                </tr>
+
+                <tr>
+                    <td>401</td>
+                    <td>Unauthorized</td>
+                </tr>
+
+                <tr>
+                    <td>403</td>
+                    <td>Forbidden</td>
+                </tr>
+
+                <tr>
+                    <td>404</td>
+                    <td>Not Found</td>
+                </tr>
+
+                <tr>
+                    <td>405</td>
+                    <td>Method Not Allowed</td>
+                </tr>
+
+                <tr>
+                    <td>409</td>
+                    <td>Conflict</td>
+                </tr>
+
+                <tr>
+                    <td>422</td>
+                    <td>Unprocessable Content</td>
+                </tr>
+
+                <tr>
+                    <td>429</td>
+                    <td>Too Many Requests</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h3>5xx — Server Errors</h3>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>500</td>
+                    <td>Internal Server Error</td>
+                </tr>
+
+                <tr>
+                    <td>503</td>
+                    <td>Service Unavailable</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   8. HTTP vs HTTPS   * -->
+
+    <section>
+        <h2>8. HTTP vs HTTPS</h2>
+
+        <h3>HTTP</h3>
+
+        <p>
+            HyperText Transfer Protocol.
+        </p>
+
+        <h3>HTTPS</h3>
+
+        <p>
+            HTTPS is HTTP transported over a secure TLS connection.
+        </p>
+
+        <pre>
+HTTPS = HTTP + TLS
+        </pre>
+
+        <h3>TLS provides:</h3>
+
+        <ul>
+            <li>Encryption</li>
+            <li>Data integrity</li>
+            <li>Server authentication</li>
+        </ul>
+
+        <p>
+            HTTPS helps protect sensitive information such as
+            passwords, credit card information, and authentication tokens.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   9. TYPES OF APIs   * -->
+
+    <section>
+        <h2>9. Types of APIs</h2>
+
+        <h3>Web APIs</h3>
+
+        <p>
+            APIs that communicate over a network.
+        </p>
+
+        <ul>
+            <li>REST API</li>
+            <li>GraphQL API</li>
+        </ul>
+
+        <h3>Local APIs</h3>
+
+        <p>
+            APIs used inside an operating system,
+            platform, or application.
+        </p>
+
+        <ul>
+            <li>Windows API</li>
+            <li>Android APIs</li>
+            <li>Browser Web APIs</li>
+        </ul>
+
+        <p>
+            <strong>REST</strong> is an architectural style.
+        </p>
+
+        <p>
+            <strong>GraphQL</strong> is a query language and runtime for APIs.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   10. AJAX   * -->
+
+    <section>
+        <h2>10. AJAX</h2>
+
+        <p>
+            <strong>AJAX</strong> stands for
+            <strong>Asynchronous JavaScript and XML</strong>.
+        </p>
+
+        <p>
+            AJAX is a technique for making asynchronous network
+            requests and updating parts of a webpage without
+            requiring a full page reload or navigation.
+        </p>
+
+        <p>
+            Despite the name, AJAX does not require XML.
+        </p>
+
+        <h3>AJAX can work with:</h3>
+
+        <ul>
+            <li>JavaScript</li>
+            <li>HTTP</li>
+            <li>XMLHttpRequest</li>
+            <li>Fetch API</li>
+            <li>JSON</li>
+            <li>HTML / CSS</li>
+        </ul>
+
+        <h3>Traditional Approach</h3>
+
+        <pre>
+Click
+ ↓
+Reload entire page
+ ↓
+Display new data
+        </pre>
+
+        <h3>AJAX-style Approach</h3>
+
+        <pre>
+Click
+ ↓
+Send request in background
+ ↓
+Receive data
+ ↓
+Update part of the page
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   11. SYNC / ASYNC   * -->
+
+    <section>
+        <h2>11. Synchronous vs Asynchronous</h2>
+
+        <h3>Synchronous</h3>
+
+        <p>
+            Tasks are executed sequentially.
+            The next operation waits for the current one.
+        </p>
+
+        <pre>
+Task 1
+  ↓
+Task 2
+  ↓
+Task 3
+        </pre>
+
+        <h3>Asynchronous</h3>
+
+        <p>
+            An operation can start without blocking the rest
+            of the program while waiting for its result.
+        </p>
+
+        <pre>
+Start Task
+    ↓
+Continue other work
+    ↓
+Task finishes later
+        </pre>
+
+        <h3>Common Examples</h3>
+
+        <ul>
+            <li>Network requests</li>
+            <li>Timers</li>
+            <li>File operations</li>
+        </ul>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   12. CALLBACK   * -->
+
+    <section>
+        <h2>12. Callback</h2>
+
+        <p>
+            A callback is a function passed to another function
+            to be executed later.
+        </p>
+
+        <pre>
+doSomething(function () {
+    console.log("Finished");
+});
+        </pre>
+
+        <p>
+            When many asynchronous operations depend on each other,
+            callbacks can become deeply nested.
+        </p>
+
+        <p>
+            This is commonly called
+            <strong>Callback Hell</strong> or
+            <strong>Pyramid of Doom</strong>.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   13. PROMISE   * -->
+
+    <section>
+        <h2>13. Promise</h2>
+
+        <p>
+            A Promise is a JavaScript object that represents
+            the eventual completion or failure of an
+            asynchronous operation.
+        </p>
+
+        <h3>Promise States</h3>
+
+        <ol>
+            <li>
+                <strong>Pending</strong>
+                — Operation hasn't finished yet.
+            </li>
+
+            <li>
+                <strong>Fulfilled</strong>
+                — Operation completed successfully.
+            </li>
+
+            <li>
+                <strong>Rejected</strong>
+                — Operation failed.
+            </li>
+        </ol>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   14. PROMISE METHODS   * -->
+
+    <section>
+        <h2>14. Promise Methods</h2>
+
+        <h3>then()</h3>
+
+        <p>
+            Runs when the Promise is fulfilled.
+        </p>
+
+        <pre>
+promise.then(result => {
+    console.log(result);
+});
+        </pre>
+
+
+        <h3>catch()</h3>
+
+        <p>
+            Handles a rejected Promise.
+        </p>
+
+        <pre>
+promise.catch(error => {
+    console.log(error);
+});
+        </pre>
+
+
+        <h3>finally()</h3>
+
+        <p>
+            Runs when the Promise is settled,
+            whether fulfilled or rejected.
+        </p>
+
+        <pre>
+promise.finally(() => {
+    console.log("Finished");
+});
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   15. PROMISE CHAINING   * -->
+
+    <section>
+        <h2>15. Promise Chaining</h2>
+
+        <p>
+            <strong>.then()</strong> returns a new Promise.
+            This allows us to chain multiple asynchronous operations.
+        </p>
+
+        <pre>
+doSomething()
+    .then(result => {
+        return doSomethingElse(result);
+    })
+    .then(result => {
+        return doThirdThing(result);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+        </pre>
+
+        <p>
+            The returned value from one
+            <strong>.then()</strong>
+            can be passed to the next one.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   16. FETCH   * -->
+
+    <section>
+        <h2>16. Fetch API</h2>
+
+        <p>
+            The Fetch API is a modern JavaScript API
+            for making network requests.
+        </p>
+
+        <p>
+            Fetch is Promise-based.
+        </p>
+
+        <pre>
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   17. FETCH ERRORS   * -->
+
+    <section>
+        <h2>17. Fetch & HTTP Errors</h2>
+
+        <p>
+            Important:
+            <strong>fetch()</strong> does not automatically reject
+            its Promise for HTTP errors such as 404 or 500.
+        </p>
+
+        <p>
+            If the server responds, fetch normally fulfills
+            with a <strong>Response</strong> object.
+        </p>
+
+        <h3>Check response.ok</h3>
+
+        <pre>
+fetch(url)
+    .then(response => {
+
+        if (!response.ok) {
+            throw new Error(
+                `HTTP Error: ${response.status}`
+            );
+        }
+
+        return response.json();
+    });
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   18. SEND DATA   * -->
+
+    <section>
+        <h2>18. Sending Data with Fetch</h2>
+
+        <p>
+            By default, fetch() uses the GET method.
+        </p>
+
+        <pre>
+fetch(url);
+        </pre>
+
+        <h3>POST Example</h3>
+
+        <pre>
+fetch(url, {
+    method: "POST",
+
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+        name: "Mohamed"
+    })
+});
+        </pre>
+
+        <p>
+            A GET request made through Fetch cannot have a request body.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   19. ASYNC / AWAIT   * -->
+
+    <section>
+        <h2>19. async / await</h2>
+
+        <p>
+            <strong>async / await</strong> is modern JavaScript
+            syntax for working with Promises.
+        </p>
+
+        <p>
+            It does not replace Promises.
+            It provides a cleaner syntax for working with them.
+        </p>
+
+        <h3>async</h3>
+
+        <p>
+            An async function always returns a Promise.
+        </p>
+
+        <pre>
+async function getData() {
+    return "Hello";
+}
+        </pre>
+
+        <h3>await</h3>
+
+        <p>
+            await waits for a Promise to settle and gives
+            the fulfilled value.
+        </p>
+
+        <pre>
+async function getData() {
+
+    const response = await fetch(url);
+
+}
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   20. ASYNC / AWAIT EXAMPLE   * -->
+
+    <section>
+        <h2>20. async / await Example</h2>
+
+        <h3>Promise Style</h3>
+
+        <pre>
+fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+        </pre>
+
+        <h3>async / await Style</h3>
+
+        <pre>
+async function getData() {
+
+    const response = await fetch(url);
+
+    const data = await response.json();
+
+    console.log(data);
+}
+        </pre>
+
+        <p>
+            async / await often makes complex asynchronous
+            code easier to read.
+        </p>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   21. AWAIT   * -->
+
+    <section>
+        <h2>21. Important await Point</h2>
+
+        <p>
+            await pauses the execution of the current
+            async function until the Promise settles.
+        </p>
+
+        <p>
+            It does not freeze the entire browser
+            or JavaScript application.
+        </p>
+
+        <pre>
+async function example() {
+
+    const data = await getData();
+
+    console.log(data);
+}
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   22. TRY CATCH   * -->
+
+    <section>
+        <h2>22. try / catch</h2>
+
+        <p>
+            try...catch is used to handle runtime exceptions.
+        </p>
+
+        <h3>try</h3>
+
+        <p>
+            Contains code that might throw an error.
+        </p>
+
+        <h3>catch</h3>
+
+        <p>
+            Runs when an error is thrown.
+        </p>
+
+        <h3>finally</h3>
+
+        <p>
+            Runs whether an error occurred or not.
+        </p>
+
+        <pre>
+try {
+
+    // Code that might throw
+
+} catch (error) {
+
+    // Handle error
+
+} finally {
+
+    // Always runs
+
+}
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   23. TRY CATCH + FETCH   * -->
+
+    <section>
+        <h2>23. try / catch + Fetch</h2>
+
+        <p>
+            A common pattern when working with APIs:
+        </p>
+
+        <pre>
+async function getUsers() {
+
+    try {
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(
+                `HTTP Error: ${response.status}`
+            );
+        }
+
+        const users = await response.json();
+
+        console.log(users);
+
+    } catch (error) {
+
+        console.log(error);
+
+    } finally {
+
+        console.log("Request finished");
+
+    }
+}
+        </pre>
+
+        <h3>Flow</h3>
+
+        <pre>
+try
+ ↓
+Request
+ ↓
+Success → Continue
+ ↓
+Error → catch
+ ↓
+finally
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   24. BIG PICTURE   * -->
+
+    <section>
+        <h2>24. The Big Picture</h2>
+
+        <pre>
+User
+ ↓
+Website
+ ↓
+JavaScript
+ ↓
+fetch()
+ ↓
+HTTP Request
+ ↓
+API / Server
+ ↓
+HTTP Response
+ ↓
+Promise
+ ↓
+await
+ ↓
+JSON Data
+ ↓
+JavaScript
+ ↓
+DOM
+ ↓
+Updated UI
+        </pre>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   25. QUICK REVISION   * -->
+
+    <section>
+        <h2>25. Quick Revision</h2>
+
+        <dl>
+
+            <dt>
+                <strong>API</strong>
+            </dt>
+
+            <dd>
+                An interface that allows software systems
+                to communicate.
+            </dd>
+
+
+            <dt>
+                <strong>HTTP</strong>
+            </dt>
+
+            <dd>
+                Protocol used for web communication.
+            </dd>
+
+
+            <dt>
+                <strong>HTTPS</strong>
+            </dt>
+
+            <dd>
+                HTTP protected with TLS.
+            </dd>
+
+
+            <dt>
+                <strong>AJAX</strong>
+            </dt>
+
+            <dd>
+                A technique for asynchronous web requests
+                and partial page updates.
+            </dd>
+
+
+            <dt>
+                <strong>XMLHttpRequest</strong>
+            </dt>
+
+            <dd>
+                An older browser API for network requests.
+            </dd>
+
+
+            <dt>
+                <strong>Fetch</strong>
+            </dt>
+
+            <dd>
+                A modern Promise-based API for network requests.
+            </dd>
+
+
+            <dt>
+                <strong>Promise</strong>
+            </dt>
+
+            <dd>
+                Represents the eventual result of
+                an asynchronous operation.
+            </dd>
+
+
+            <dt>
+                <strong>async</strong>
+            </dt>
+
+            <dd>
+                Makes a function return a Promise.
+            </dd>
+
+
+            <dt>
+                <strong>await</strong>
+            </dt>
+
+            <dd>
+                Waits for a Promise inside async code.
+            </dd>
+
+
+            <dt>
+                <strong>try / catch</strong>
+            </dt>
+
+            <dd>
+                Handles thrown errors.
+            </dd>
+
+        </dl>
+    </section>
+
+
+    <hr>
+
+
+    <!-- *   26. FINAL FLOW   * -->
+
+    <section>
+        <h2>26. Final Flow</h2>
+
+        <pre>
+API
+ ↓
+HTTP
+ ↓
+Request / Response
+ ↓
+Fetch
+ ↓
+Promise
+ ↓
+async / await
+ ↓
+try / catch
+ ↓
+Handle Data
+ ↓
+Update UI
+        </pre>
+    </section>
+
+
+</body>
+
+</html>
